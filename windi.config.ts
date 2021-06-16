@@ -12,6 +12,9 @@ export default defineConfig({
       ...theme('colors'),
       primary: '#E5F6EF'
     }),
+    fontFamily: {
+      sans: ['Open Sans', 'Noto Sans JP', 'sans-serif']
+    },
   },
   plugins: [
     require('windicss/plugin/line-clamp'),
