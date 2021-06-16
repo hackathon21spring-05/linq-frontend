@@ -32,7 +32,8 @@ export default defineComponent({
         'captiopn': 'oha',
         'thumbnail': 'https://images-na.ssl-images-amazon.com/images/I/61kNxS8EZtL._AC_SY355_.jpg',
         'tags': [
-          'kato', 'megumi'
+          'kato', 'megumi', 'kashiwagi', 'eriri',
+          'kasumigaoka', 'utaha', 'hyodo', 'michiru', 'hashima', 'izumi'
         ]
       },
       {
