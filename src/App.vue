@@ -2,7 +2,7 @@
   <page-header />
   <Suspense>
     <template #default>
-      <router-view class="pb-4" />
+      <router-view />
     </template>
     <template #fallback>
       <loading />
