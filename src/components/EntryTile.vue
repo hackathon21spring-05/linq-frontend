@@ -26,7 +26,7 @@
         <div class="mt-1">
           <img
             class="w-full"
-            :src="BookmarkEmpty"
+            :src="BookmarkLogo"
           >
         </div>
       </div>
@@ -35,9 +35,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
 import Tag from './Tag.vue'
 import BookmarkEmpty from '../assets/bookmark_empty.svg'
+import BookmarkFill from '../assets/bookmark_fill.svg'
 
 export default defineComponent({
   name: 'EntryTile',
@@ -50,9 +51,12 @@ export default defineComponent({
       required: true
     }
   },
-  setup() {
+  setup(props) {
+    const BookmarkLogo = computed(() => 
+      props.entry.isBookmark ? BookmarkFill : BookmarkEmpty
+    )
     return {
-      BookmarkEmpty
+      BookmarkLogo
     }
   }
 })

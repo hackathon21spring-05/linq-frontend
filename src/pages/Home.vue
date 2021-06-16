@@ -34,25 +34,28 @@ export default defineComponent({
         'tags': [
           'kato', 'megumi', 'kashiwagi', 'eriri',
           'kasumigaoka', 'utaha', 'hyodo', 'michiru', 'hashima', 'izumi'
-        ]
+        ],
+        'isBookmark': false
       },
       {
         'url': 'https://zenn.dev/',
         'title': '加藤恵',
         'captiopn': '豊ヶ崎学園に通う高校2年生で、同人サークル『Blessing software』のメインヒロイン(役割不明)。のちにサークル副代表を兼任。目鼻立ちが整っていて、可愛いと綺麗が中途半端に同居した容姿。白いベレー帽とスマホがトレードマーク。',
-        'thumbnail': 'https://images-na.ssl-images-amazon.com/images/I/61kNxS8EZtL._AC_SY355_.jpg',
+        'thumbnail': 'https://saenai-movie.com/megumi_birthday_fine/present/assets/img/top/img_main.jpg',
         'tags': [
           'kato', 'megumi'
-        ]
+        ],
+        'isBookmark': true
       },
       {
         'url': 'https://zenn.dev/',
         'title': 'test3',
         'captiopn': 'oha',
-        'thumbnail': 'https://images-na.ssl-images-amazon.com/images/I/61kNxS8EZtL._AC_SY355_.jpg',
+        'thumbnail': 'https://ogre.natalie.mu/media/pp/static/comic/saenai-heroine02/photo01s.jpg',
         'tags': [
           'kato', 'megumi'
-        ]
+        ],
+        'isBookmark': false
       }
     ]
     return {
