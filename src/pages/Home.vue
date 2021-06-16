@@ -28,8 +28,8 @@ export default defineComponent({
     const newEntries = [
       {
         'url': 'https://zenn.dev/',
-        'title': 'test',
-        'captiopn': 'oha',
+        'title': '加藤恵 「どうかな？わたしは、あなたが望む、メインヒロインに、なれたかな？」「どうかな？わたしは、あなたが望む、メインヒロインに、なれたかな？」',
+        'captiopn': '豊ヶ崎学園に通う高校2年生で、同人サークル『Blessing software』のメインヒロイン(役割不明)。のちにサークル副代表を兼任。目鼻立ちが整っていて、可愛いと綺麗が中途半端に同居した容姿。白いベレー帽とスマホがトレードマーク。',
         'thumbnail': 'https://images-na.ssl-images-amazon.com/images/I/61kNxS8EZtL._AC_SY355_.jpg',
         'tags': [
           'kato', 'megumi', 'kashiwagi', 'eriri',
@@ -38,8 +38,8 @@ export default defineComponent({
       },
       {
         'url': 'https://zenn.dev/',
-        'title': 'test2',
-        'captiopn': 'oha',
+        'title': '加藤恵',
+        'captiopn': '豊ヶ崎学園に通う高校2年生で、同人サークル『Blessing software』のメインヒロイン(役割不明)。のちにサークル副代表を兼任。目鼻立ちが整っていて、可愛いと綺麗が中途半端に同居した容姿。白いベレー帽とスマホがトレードマーク。',
         'thumbnail': 'https://images-na.ssl-images-amazon.com/images/I/61kNxS8EZtL._AC_SY355_.jpg',
         'tags': [
           'kato', 'megumi'
