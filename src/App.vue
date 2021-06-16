@@ -1,30 +1,26 @@
 <template>
-  <img
-    alt="Vue logo"
-    src="./assets/logo.png"
-  >
-  <HelloWorld msg="amoxy改ざん済み" />
+  <page-header />
+  <Suspense>
+    <template #default>
+      <router-view class="pb-4" />
+    </template>
+    <template #fallback>
+      <loading />
+    </template>
+  </Suspense>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
+import PageHeader from '/@/components/PageHeader.vue'
+import Loading from '/@/pages/Loading.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
+    PageHeader,
+    Loading
   }
 })
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

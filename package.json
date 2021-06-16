@@ -16,9 +16,12 @@
     "*.{css,scss,vue}": "stylelint --fix"
   },
   "dependencies": {
-    "vue": "^3.0.5"
+    "vue": "^3.0.5",
+    "vue-router": "^4.0.9"
   },
   "devDependencies": {
+    "@types/node": "^15.12.2",
+    "@types/vue-router": "^2.0.0",
     "@typescript-eslint/eslint-plugin": "^4.27.0",
     "@typescript-eslint/parser": "^4.27.0",
     "@vitejs/plugin-vue": "^1.2.3",
