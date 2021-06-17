@@ -14,7 +14,7 @@
         <div>
           <div class="h-14 text-xl font-bold mb-3 line-clamp-2 hover:text-accent duration-200">
             <a
-              :href="`http://${entry.url}`"
+              :href="entry.url"
               target="_blank"
             >
               {{ entry.title }}
