@@ -2,16 +2,28 @@
   <div class="bg-white rounded-md min-w-xs">
     <div class="flex flex-col w-full h-full p-4 divide-y">
       <div class="h-8rem pb-2 flex">
-        <img
-          class="w-40 h-30 object-cover mr-4"
-          :src="entry.thumbnail"
+        <router-link
+          class="inline-block w-40 mr-4"
+          :to="`/entry/${entry.url}`"
         >
+          <img
+            class="min-w-40 h-30 object-cover"
+            :src="entry.thumbnail"
+          >
+        </router-link>
         <div>
-          <div class="h-14 text-xl font-bold mb-3 line-clamp-2">
-            {{ entry.title }}
+          <div class="h-14 text-xl font-bold mb-3 line-clamp-2 hover:text-accent duration-200">
+            <a
+              :href="`http://${entry.url}`"
+              target="_blank"
+            >
+              {{ entry.title }}
+            </a>
           </div>
           <div class="line-clamp-2">
-            {{ entry.captiopn }}
+            <router-link :to="`/entry/${entry.url}`">
+              {{ entry.captiopn }}
+            </router-link>
           </div>
         </div>
       </div>
