@@ -73,12 +73,14 @@ export default defineComponent({
 <style>
   @charset "utf-8";
   #icon{
-    width: 100px;
-    margin-right: auto;
+    width: 135px;
+    height: 49px;
+    right: 231px;
+    top: px;
   }
   #icon-add{
     align-items: center;
-    height: 29px;
+    height: 20px;
   }
   
 
@@ -89,7 +91,7 @@ right:100px;
 }
 #sbox5{	
 outline:0;	
-height:29px;
+height:25px;
 padding:0 10px; 
 
 left:0;
@@ -100,7 +102,7 @@ background:#eee;
 }
 #sbtn5{
 width:70px;
-height:29px;
+height:25px;
 
 left:280px; 
 top:0;
