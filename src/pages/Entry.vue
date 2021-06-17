@@ -4,13 +4,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { useRoute } from 'vue-router'
+import useQuery from '/@/use/query'
 
 export default defineComponent({
   name: 'Entry',
   setup() {
-    const route = useRoute()
-    const url = route.fullPath.slice(7)
+    const url = useQuery('url')
     return {
       url
     }

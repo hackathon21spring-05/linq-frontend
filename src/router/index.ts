@@ -28,7 +28,7 @@ const routes = [
     component: Add
   },
   {
-    path: '/entry/:url+',
+    path: '/entry',
     name: 'Entry',
     component: Entry
   }
