@@ -17,8 +17,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import useQuery from '../use/query'
-import EntryTile from '../components/EntryTile.vue'
+import useQuery from '/@/use/query'
+import EntryTile from '/@/components/EntryTile.vue'
 
 export default defineComponent({
   name: 'Search',

@@ -17,7 +17,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import EntryTile from '../components/EntryTile.vue'
+import EntryTile from '/@/components/EntryTile.vue'
 
 export default defineComponent({
   name: 'Home',

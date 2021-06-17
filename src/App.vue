@@ -2,6 +2,7 @@
   <page-header />
   <Suspense>
     <template #default>
+      <!-- <router-view v-if="fetchedMe" /> -->
       <router-view />
     </template>
     <template #fallback>
@@ -11,15 +12,28 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, onBeforeMount, computed } from 'vue'
 import PageHeader from '/@/components/PageHeader.vue'
 import Loading from '/@/pages/Loading.vue'
+import { useStore } from './store'
 
 export default defineComponent({
   name: 'App',
   components: {
     PageHeader,
     Loading
+  },
+  setup() {
+    // const store = useStore()
+    // const fetchedMe = computed(() => store.state.me !== null)
+
+    // onBeforeMount(() => {
+    //   if (fetchedMe.value) return
+    //   store.dispatch.fetchMe()
+    // })
+    return {
+      // fetchedMe
+    }
   }
 })
 </script>
