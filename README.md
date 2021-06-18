@@ -5,6 +5,7 @@ linQ frontend
 ## dev
 
 ```
+npm run gen-api
 npm install
 npm run dev
 ```
