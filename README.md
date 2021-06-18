@@ -11,7 +11,7 @@ npm run dev
 
 ## product
 
-`master`ブランチがNetlifyに自動デプロイ
+`master`ブランチがCloudflareに自動デプロイ
 
-https://frosty-davinci-66d5ab.netlify.app/
+https://linq-frontend.pages.dev
 

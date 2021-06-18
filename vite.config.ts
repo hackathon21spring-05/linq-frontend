@@ -10,6 +10,14 @@ export default defineConfig({
   alias: {
     '/@': srcPath
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'https://linq-test.trap.games',
+        changeOrigin: true
+      }
+    }
+  },
   plugins: [
     vue(),
     WindiCSS()

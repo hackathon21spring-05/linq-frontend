@@ -2,11 +2,11 @@
   <div class="bg-primary flex-1">
     <div class="container mx-auto px-4">
       <div class="text-3xl font-bold mt-16">
-        New
+        Tag search for "{{ tag }}"
       </div>
       <div class="grid lg:grid-cols-2 gap-5 mt-8">
         <entry-tile
-          v-for="entry in newEntries"
+          v-for="entry in searchEntries"
           :key="entry.url"
           :entry="entry"
         />
@@ -17,15 +17,19 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import useQuery from '/@/use/query'
 import EntryTile from '/@/components/EntryTile.vue'
 
 export default defineComponent({
-  name: 'Home',
+  name: 'Search',
   components: {
     EntryTile
   },
   setup() {
-    const newEntries = [
+    const tag = useQuery('tag')
+    // const title = useQuery('title')
+    // const text = useQuery('text')
+    const searchEntries = [
       {
         'url': 'https://zenn.dev/',
         'title': '加藤恵 「どうかな？わたしは、あなたが望む、メインヒロインに、なれたかな？」「どうかな？わたしは、あなたが望む、メインヒロインに、なれたかな？」',
@@ -59,7 +63,7 @@ export default defineComponent({
       }
     ]
     return {
-      newEntries
+      tag, searchEntries
     }
   }
 })
