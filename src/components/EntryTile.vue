@@ -62,7 +62,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
-import Tag from './Tag.vue'
+import Tag from '/@/components/Tag.vue'
 import BookmarkEmpty from '/@/assets/bookmark_empty.svg'
 import BookmarkFill from '/@/assets/bookmark_fill.svg'
 import LinkIcon from '/@/assets/link.svg'
