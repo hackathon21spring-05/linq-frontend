@@ -1,10 +1,10 @@
 // eslint-disable-next-line no-restricted-imports
-// import { Apis, Configuration } from '/@/lib/apis/generated'
+import { Apis, Configuration } from '/@/lib/apis/generated'
 
-// const apis = new Apis(new Configuration({ basePath: '/api' }))
+const apis = new Apis(new Configuration({ basePath: '/api' }))
 
-// export default apis
+export default apis
 // eslint-disable-next-line no-restricted-imports
-// export * from '/@/lib/apis/generated'
+export * from '/@/lib/apis/generated'
 
 export const traP_ID = 1

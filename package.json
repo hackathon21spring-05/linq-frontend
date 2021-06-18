@@ -2,7 +2,7 @@
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "rimraf ./src/lib/apis/generated && node ./scripts/generate-apis.js && vue-tsc --noEmit && vite build",
     "serve": "vite preview",
     "lint": "eslint --ext .ts,vue --ignore-path .gitignore . --fix && stylelint src/**/*.{css,scss,vue}",
     "gen-api": "node ./scripts/generate-apis.js",
