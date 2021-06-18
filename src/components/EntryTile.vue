@@ -3,7 +3,7 @@
     <div class="flex flex-col w-full h-full p-4 divide-y">
       <div class="h-8rem pb-2 flex">
         <router-link
-          class="inline-block w-40 mr-4"
+          class="hidden md:inline-block w-40 mr-4"
           :to="`/entry/${entry.url}`"
         >
           <img

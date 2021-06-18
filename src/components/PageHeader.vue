@@ -1,5 +1,5 @@
 <template>
-  <div class="h-16 container mx-auto px-2 flex flex-wrap">
+  <div class="h-16 container mx-auto px-2 flex">
     <div class="h-full flex">
       <img :src="logo">
       <div class="text-4xl font-bold ml-2 my-auto">
@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="h-full ml-auto flex">
-      <form class="invisible sm:visible flex my-auto bg-primary rounded-lg py-1 px-2">
+      <form class="hidden md:inline-block flex my-auto bg-primary rounded-lg py-1 px-2">
         <input
           class="bg-primary border-none outline-none"
           type="text"
