@@ -15,29 +15,35 @@
       >
         <input
           v-model="searchValue"
-          class="bg-primary border-none outline-none"
+          class="bg-primary border-none focus:outline-none"
           type="text"
         >
         <button 
-          class="my-auto"
+          class="my-auto border-none focus:outline-none"
         >
           <img
             :src="glass"
           >
         </button>
       </form>
-      <button class="flex h-8.5 font-bold my-auto ml-4 bg-accent rounded-lg text-white px-2 py-auto">
+      <router-link
+        tag="button"
+        to="/add"
+        class="flex h-8.5 border-none focus:outline-none font-bold my-auto ml-4 bg-accent rounded-lg text-white px-2 py-auto"
+      >
         <img
           class="my-auto mr-1"
           :src="penIcon"
         >
         <span class="my-auto">add</span>
-      </button>
+      </router-link>
       <div class="h-10 my-auto ml-4">
-        <img
-          class="h-10 rounded-1/2"
-          :src="userIcon"
-        >
+        <router-link to="/bookmark">
+          <img
+            class="h-10 rounded-1/2"
+            :src="userIcon"
+          >
+        </router-link>
       </div>
     </div>
   </div>
