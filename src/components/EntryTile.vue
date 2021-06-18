@@ -1,16 +1,30 @@
 <template>
   <div class="bg-white rounded-md min-w-xs">
-    <div class="flex flex-col w-full h-full p-4 divide-y">
-      <div class="h-8rem pb-2 flex">
-        <router-link
-          class="max-w-40 mr-4"
-          :to="`/entry?url=${entry.url}`"
-        >
-          <img
-            class="min-w-30 sm:min-w-40 h-30 object-cover"
-            :src="entry.thumbnail"
+    <div class="flex flex-col w-full h-full p-4 divide-y-2 divide-gray-200">
+      <div class="flex">
+        <div class="mr-4">
+          <router-link
+            class="max-w-40"
+            :to="`/entry?url=${entry.url}`"
           >
-        </router-link>
+            <img
+              class="min-w-30 sm:min-w-40 h-30 object-cover"
+              :src="entry.thumbnail"
+            >
+          </router-link>
+          <a
+            :href="`${entry.url.split('://')[0]}://${entry.url.split('://')[1].split('/')[0]}`"
+            target="_blank"
+          >
+            <div class="my-1.5 ml-1 text-secondary max-w-40 text-xs flex">
+              <img
+                class="mr-1 h-3 my-auto"
+                :src="LinkIcon"
+              >
+              {{ entry.url.split('://')[1].split('/')[0] }}
+            </div>
+          </a>
+        </div>
         <div>
           <div class="h-14 text-xl font-bold mb-3 line-clamp-2 hover:text-accent duration-200">
             <a
@@ -20,7 +34,7 @@
               {{ entry.title }}
             </a>
           </div>
-          <div class="line-clamp-2">
+          <div class="line-clamp-3 text-secondary">
             <router-link :to="`/entry?url=${entry.url}`">
               {{ entry.captiopn }}
             </router-link>
@@ -51,6 +65,7 @@ import { defineComponent, computed } from 'vue'
 import Tag from './Tag.vue'
 import BookmarkEmpty from '/@/assets/bookmark_empty.svg'
 import BookmarkFill from '/@/assets/bookmark_fill.svg'
+import LinkIcon from '/@/assets/link.svg'
 
 export default defineComponent({
   name: 'EntryTile',
@@ -68,7 +83,7 @@ export default defineComponent({
       props.entry.isBookmark ? BookmarkFill : BookmarkEmpty
     )
     return {
-      BookmarkLogo
+      BookmarkLogo, LinkIcon
     }
   }
 })

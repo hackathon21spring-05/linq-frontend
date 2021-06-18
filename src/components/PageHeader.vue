@@ -10,7 +10,7 @@
     </router-link>
     <div class="h-full ml-auto flex">
       <form
-        class="hidden sm:flex my-auto bg-primary rounded-lg py-1 px-2"
+        class="hidden sm:flex my-auto bg-primary border-2 border-accent2 rounded-2xl py-1 px-2"
         @submit="onSubmit"
       >
         <input

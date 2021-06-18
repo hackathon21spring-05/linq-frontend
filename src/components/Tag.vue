@@ -1,6 +1,6 @@
 <template>
   <router-link :to="`/search?tag=${name}`">
-    <div class="bg-gray-100 mt-1 mr-1 px-2 rounded-lg text-sm">
+    <div class="bg-gray-100 mt-1 mr-1 px-2 rounded-lg text-sm text-secondary">
       {{ name }}
     </div>
   </router-link>
