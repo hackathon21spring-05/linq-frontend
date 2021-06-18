@@ -4,7 +4,7 @@
       <div class="h-8rem pb-2 flex">
         <router-link
           class="max-w-40 mr-4"
-          :to="`/entry/${entry.url}`"
+          :to="`/entry?url=${entry.url}`"
         >
           <img
             class="min-w-30 sm:min-w-40 h-30 object-cover"
@@ -21,7 +21,7 @@
             </a>
           </div>
           <div class="line-clamp-2">
-            <router-link :to="`/entry/${entry.url}`">
+            <router-link :to="`/entry?url=${entry.url}`">
               {{ entry.captiopn }}
             </router-link>
           </div>

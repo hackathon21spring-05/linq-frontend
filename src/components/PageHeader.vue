@@ -1,20 +1,25 @@
 <template>
   <div class="h-16 container mx-auto px-2 flex">
-    <div class="h-full flex">
-      <img :src="logo">
-      <div class="text-4xl font-bold ml-2 my-auto">
-        linQ
+    <router-link to="/">
+      <div class="h-full flex">
+        <img :src="logo">
+        <div class="text-4xl font-bold ml-2 my-auto">
+          linQ
+        </div>
       </div>
-    </div>
+    </router-link>
     <div class="h-full ml-auto flex">
-      <form class="hidden sm:flex my-auto bg-primary rounded-lg py-1 px-2">
+      <form
+        class="hidden sm:flex my-auto bg-primary rounded-lg py-1 px-2"
+        @submit="onSubmit"
+      >
         <input
+          v-model="searchValue"
           class="bg-primary border-none outline-none"
           type="text"
         >
-        <button
+        <button 
           class="my-auto"
-          type="submit"
         >
           <img
             :src="glass"
@@ -39,7 +44,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, watch, ref } from 'vue'
+import router from '/@/router'
 import logo from '/@/assets/logo.svg'
 import penIcon from '/@/assets/penicon.svg'
 import glass from '/@/assets/glass.svg'
@@ -47,9 +53,28 @@ import userIcon from '/@/assets/trasta.png'
 
 export default defineComponent({
   name: 'Header',
-  setup() {
+  props: {
+    value: {
+      type: String,
+      default: ''
+    },
+  },
+  setup(props) {
+    const searchValue = ref(props.value)
+    watch(
+      () => props.value,
+      v => {
+        searchValue.value = v
+      }
+    )
+
+    const onSubmit = (e: Event) => {
+      e.preventDefault()
+      router.push({path: '/search', query: { tag: searchValue.value }})
+      searchValue.value = ''
+    }
     return {
-      logo, userIcon, penIcon, glass
+      logo, userIcon, penIcon, glass, onSubmit, searchValue
     }
   }
 })
