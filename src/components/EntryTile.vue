@@ -3,11 +3,11 @@
     <div class="flex flex-col w-full h-full p-4 divide-y">
       <div class="h-8rem pb-2 flex">
         <router-link
-          class="hidden md:inline-block w-40 mr-4"
+          class="max-w-40 mr-4"
           :to="`/entry/${entry.url}`"
         >
           <img
-            class="min-w-40 h-30 object-cover"
+            class="min-w-30 sm:min-w-40 h-30 object-cover"
             :src="entry.thumbnail"
           >
         </router-link>
