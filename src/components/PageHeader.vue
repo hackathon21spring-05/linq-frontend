@@ -9,51 +9,45 @@
         >
       </h1>
       
-      <nav class="header-nav">
-        <ul class="header-navList">
-          <li>
-            <form
-              id="form5"
-              action="自分のサイトのURL"
-            >
-              <input
-                id="sbox5"
-                
-                name="s"
-                type="text"
-                placeholder="キーワードを入力"
-              >
-              <input
-                id="sbtn5"
-                type="submit"
-                value="検索"
-              >
-            </form>
-          </li>
-          <li>
-            <a
-              href="#"
+      <ul
+        class="header-navList
+"
+      >
+        <li>
+          <link
+            href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            rel="stylesheet"
+          >
+
+          <input
+            type="text"
+            class="use_icon"
+            placeholder="&#xf002;"
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            target="_blank"
+          >
+            <img
+              id="icon-add"
+              src="./image 11.png"
               target="_blank"
-            >
-              <img
-                id="icon-add"
-                src="./image 11.png"
-                target="_blank"
-              ></a>
-          </li>
-          <li>
-            <a
-              href="#"
+            ></a>
+        </li>
+        <li>
+          <a
+            href="#"
+            target="_blank"
+          >
+            <img
+              id="gray"
+              src="./160331_12.png"
               target="_blank"
-            >
-              <img
-                id="icon-add"
-                src="./160331_12.png"
-                target="_blank"
-              ></a>
-          </li>
-        </ul>
-      </nav>
+            ></a>
+        </li>
+      </ul>
     </div>
   </header>
 </template>
@@ -76,55 +70,41 @@ export default defineComponent({
     width: 135px;
     height: 49px;
     right: 231px;
-    top: px;
+    top: 8px;
   }
   #icon-add{
-    align-items: center;
-    height: 20px;
+    width: 75px;
+    height: 33px;
+    right: 244px;
+    top: 16px;
   }
   
-
-
-  #form5{
-right:100px;
-
-}
-#sbox5{	
-outline:0;	
-height:25px;
-padding:0 10px; 
-
-left:0;
-top:0; 
-max-width:270px;
-border-radius:2px;
-background:#eee;
-}
-#sbtn5{
-width:70px;
-height:25px;
-
-left:280px; 
-top:0;
-border-radius:2px;
-background:#3FD99A;
-color:#fff;
-font-weight:bold;
-font-size:16px;
-border:none;
-}
-#sbtn5:hover{
-background:#eee;
-color:#3FD99A;
+#gray{
+  width: 32px;
+  height: 32px;
 }
 
-
+.use_icon{
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 224px;
+    height: 28px;
+    background-color: #E5F6EF;
+}
 
 header {
-    color:#333  /* ヘッダーの文字を白にする */
+    color:#333 ; /* ヘッダーの文字を白にする */
+    height: 64px;
+    
+    align-items: center;  
 }
 .header-inner {
-  display: flex; /* 子要素を横並びにする */
+    display: flex; /* 子要素を横並びにする */
     justify-content: space-between;                         
     align-items: center;
     max-width: 1040px; /* コンテンツの最大幅を1040pxにする */
@@ -132,12 +112,10 @@ header {
     margin: 0 auto; /* 1040pxにした要素を中央寄せにする */
 }
 .header-logo {
-    display: flex;  /* 子要素を横並びにする */
-    align-items: center;  /* 子要素を上下中央に配置する */
+    top: 8px;
 }
 .header-navList {
     display: flex;  /* 子要素を横並びにする */
-    align-items: center;  /* 子要素を上下中央に配置する */
 }
 .header-logoImg {
     display: block; /* 扱いやすいようにblock要素にする */
@@ -149,13 +127,12 @@ header {
     font-weight: bold; /* 太字にする */
 }
 .header-navList li {
-    margin: 0 20px /* ナビゲーションに左右のスペースを付ける */
+    margin:20px /* ナビゲーションに左右のスペースを付ける */
 }
 .header-navList li a {
     display: block; /* 扱いやすいようにblock要素にする */
     font-size: 16px; /* 任意のフォントサイズにする */
     font-weight: bold; /* 太字にする */
 }
-
 
 </style>
