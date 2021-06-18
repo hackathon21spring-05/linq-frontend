@@ -41,7 +41,7 @@
         <router-link to="/bookmark">
           <img
             class="h-10 rounded-1/2"
-            :src="userIcon"
+            src="https://q.trap.jp/api/v3/public/icon/toshi00"
           >
         </router-link>
       </div>
@@ -55,7 +55,6 @@ import router from '/@/router'
 import logo from '/@/assets/logo.svg'
 import penIcon from '/@/assets/penicon.svg'
 import glass from '/@/assets/glass.svg'
-import userIcon from '/@/assets/trasta.png'
 
 export default defineComponent({
   name: 'Header',
@@ -81,7 +80,7 @@ export default defineComponent({
       searchValue.value = ''
     }
     return {
-      logo, userIcon, penIcon, glass, onSubmit, searchValue
+      logo, penIcon, glass, onSubmit, searchValue
     }
   }
 })
