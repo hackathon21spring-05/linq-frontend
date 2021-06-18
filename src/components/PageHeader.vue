@@ -76,6 +76,7 @@ export default defineComponent({
 
     const onSubmit = (e: Event) => {
       e.preventDefault()
+      if (searchValue.value === '') return
       router.push({path: '/search', query: { tag: searchValue.value }})
       searchValue.value = ''
     }
