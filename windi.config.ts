@@ -23,7 +23,7 @@ export default defineConfig({
       ...theme('colors'),
       primary: '#E5F6EF',
       accent: '#0BB870',
-      accent2: '#8CBEAA'
+      accent2: '#009A5A'
     }),
     fontFamily: {
       sans: ['Open Sans', 'Noto Sans JP', 'sans-serif']

@@ -29,7 +29,7 @@
       <router-link
         tag="button"
         to="/add"
-        class="flex h-8.5 border-none focus:outline-none font-bold my-auto ml-4 bg-accent rounded-lg text-white px-2 py-auto"
+        class="flex h-8.5 border-none focus:outline-none font-bold my-auto ml-4 bg-accent hover:bg-accent2 duration-200 rounded-lg text-white px-2 py-auto"
       >
         <img
           class="my-auto mr-1"
