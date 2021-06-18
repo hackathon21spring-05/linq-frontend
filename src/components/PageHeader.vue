@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="h-full ml-auto flex">
-      <form class="hidden md:inline-block flex my-auto bg-primary rounded-lg py-1 px-2">
+      <form class="hidden sm:flex my-auto bg-primary rounded-lg py-1 px-2">
         <input
           class="bg-primary border-none outline-none"
           type="text"
