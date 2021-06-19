@@ -82,7 +82,6 @@ export default defineComponent({
       searchValue.value = ''
     }
 
-    // ここ，store.state.meがなかったときの処理したほうがいいのかな？ HELP
     const userIcon = computed(() => 
       'https://q.trap.jp/api/v3/public/icon/' + store.state.me?.name
     )

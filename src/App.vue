@@ -1,9 +1,14 @@
 <template>
-  <page-header class="text-primary" />
+  <page-header
+    v-if="fetchedMe"
+    class="text-primary"
+  />
   <Suspense>
     <template #default>
-      <!-- <router-view v-if="fetchedMe" /> -->
-      <router-view class="text-primary" />
+      <router-view
+        v-if="fetchedMe"
+        class="text-primary"
+      />
     </template>
     <template #fallback>
       <loading />

@@ -1,5 +1,5 @@
 <template>
-  <div />
+  <div class="bg-primary flex-1" />
 </template>
 
 <script lang="ts">
