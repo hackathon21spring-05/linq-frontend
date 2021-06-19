@@ -139,9 +139,17 @@ export default defineComponent({
       entry.value?.isBookmark ? BookmarkFill : BookmarkEmpty
     )
 
-    const onSubmit = (e: Event) => {
+    const onSubmit = async (e: Event) => {
       e.preventDefault()
-      if (addValue.value === '') return
+      if (addValue.value === '' || url.value == undefined) return
+      const entryId = sha256.sha256(encodeURI(url.value))
+      try {
+        await apis.postTags(entryId, addValue.value)
+        const res = await apis.getEntryDetail(entryId)
+        entry.value = res.data
+      } catch (e) {
+        console.error(url.value, e)
+      }
       addValue.value = ''
     }
     
