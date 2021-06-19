@@ -84,8 +84,7 @@ export default defineComponent({
 
     // ここ，store.state.meがなかったときの処理したほうがいいのかな？ HELP
     const userIcon = computed(() => 
-      'https://q.trap.jp/api/v3/public/icon/toshi00'
-      // 'https://q.trap.jp/api/v3/public/icon/' + store.state.me?.name
+      'https://q.trap.jp/api/v3/public/icon/' + store.state.me?.name
     )
 
     return {
