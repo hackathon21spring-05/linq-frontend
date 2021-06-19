@@ -4,4 +4,6 @@ work_dir: ./dist
 
 branch:
   master:
-    startup: null
+    startup: |
+      npm ci
+      npm run build
