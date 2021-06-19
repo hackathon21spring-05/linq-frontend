@@ -54,7 +54,7 @@
           @click="changeBookmark"
         >
           <img
-            class="w-full"
+            class="h-6"
             :src="BookmarkLogo"
           >
         </button>
