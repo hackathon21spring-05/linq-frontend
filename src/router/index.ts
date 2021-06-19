@@ -35,22 +35,86 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/bookmark',
     name: 'Bookmark', 
-    component: Bookmark
+    component: Bookmark,
+    beforeEnter: async (to, _, next) => {
+      // ログイン済みかどうか調べる
+      const store = useStore()
+      if (!store.state.me){
+        try {
+          await store.dispatch.fetchMe()
+        } catch(e) {
+          console.error(e)
+        }
+      }
+      if (!store.state.me) {
+        sessionStorage.setItem('destination', to.fullPath)
+        redirect2AuthEndpoint()
+      }
+      next()
+    }
   },
   {
     path: '/search',
     name: 'Search',
-    component: Search
+    component: Search,
+    beforeEnter: async (to, _, next) => {
+      // ログイン済みかどうか調べる
+      const store = useStore()
+      if (!store.state.me){
+        try {
+          await store.dispatch.fetchMe()
+        } catch(e) {
+          console.error(e)
+        }
+      }
+      if (!store.state.me) {
+        sessionStorage.setItem('destination', to.fullPath)
+        redirect2AuthEndpoint()
+      }
+      next()
+    }
   },
   {
     path: '/add',
     name: 'Add',
-    component: Add
+    component: Add,
+    beforeEnter: async (to, _, next) => {
+      // ログイン済みかどうか調べる
+      const store = useStore()
+      if (!store.state.me){
+        try {
+          await store.dispatch.fetchMe()
+        } catch(e) {
+          console.error(e)
+        }
+      }
+      if (!store.state.me) {
+        sessionStorage.setItem('destination', to.fullPath)
+        redirect2AuthEndpoint()
+      }
+      next()
+    }
   },
   {
     path: '/entry',
     name: 'Entry',
-    component: Entry
+    component: Entry,
+    beforeEnter: async (to, _, next) => {
+      // ログイン済みかどうか調べる
+      const store = useStore()
+      if (!store.state.me){
+        try {
+          await store.dispatch.fetchMe()
+        } catch(e) {
+          console.error(e)
+        }
+      }
+      if (!store.state.me) {
+        sessionStorage.setItem('destination', to.fullPath)
+        redirect2AuthEndpoint()
+      }
+      next()
+    }
   },
   {
     path: '/callback',
