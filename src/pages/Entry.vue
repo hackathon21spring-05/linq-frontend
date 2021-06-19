@@ -5,7 +5,10 @@
       class="container mx-auto px-12"
     >
       <div class="mt-12 h-36 flex max-w-screen-lg mx-auto">
-        <button class="focus:outline-none h-18 w-18 my-auto rounded-lg bg-white flex">
+        <button
+          class="focus:outline-none h-18 w-18 my-auto rounded-lg bg-white flex"
+          @click="changeBookmark"
+        >
           <img
             class="h-10 w-10 m-auto"
             :src="BookmarkLogo"
@@ -152,9 +155,38 @@ export default defineComponent({
       }
       addValue.value = ''
     }
+
+    const changeBookmark = async(e: Event) => {
+      e.preventDefault()
+      if (url.value == undefined || entry.value == undefined) return
+      const entryId = sha256.sha256(decodeURI(url.value))
+      if (entry.value.isBookmark == true) {
+        // ブックマークの削除
+        try {
+          const res = await apis.deleteBookmark(entryId)
+          if (res.status == 204){
+            entry.value.isBookmark = false
+          }
+        } catch (e) {
+          console.error(url.value, e)
+        }
+      }else if (entry.value.isBookmark == false) {
+        // ブックマークの追加
+        try {
+          const res = await apis.putEntry({
+            url: url.value
+          })
+          if (res.status == 201) {
+            entry.value.isBookmark = true
+          }
+        } catch (e) {
+          console.error(url.value, e)
+        }
+      }
+    }
     
     return {
-      url, entry, BookmarkLogo, LinkIcon, TagIcon, EditTag, AddButton, onSubmit, addValue
+      url, entry, BookmarkLogo, LinkIcon, TagIcon, EditTag, AddButton, onSubmit, addValue, changeBookmark
     }
   }
 })
