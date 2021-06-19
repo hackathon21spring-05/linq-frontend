@@ -40,7 +40,7 @@
           <img
             class="h-36 min-w-36"
             :src="entry.thumbnail"
-            alt
+            alt=""
             onerror="this.onerror = null; this.src='';"
           >
         </div>
