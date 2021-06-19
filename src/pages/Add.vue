@@ -30,6 +30,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, watch } from 'vue'
+import apis from '/@/lib/apis'
 import router from '/@/router'
 
 export default defineComponent({
@@ -49,12 +50,23 @@ export default defineComponent({
       }
     )
 
-    const onSubmit = (e: Event) => {
+    const onSubmit = async(e: Event) => {
       e.preventDefault()
       if (addValue.value === '') return
-      router.push({path: '/search', query: { tag: addValue.value }})
+      try {
+        const entry = {
+          // あとでサーバー側で対応する
+          url: encodeURI(addValue.value)
+        }
+        await apis.putEntry(entry)
+      } catch (e) {
+        console.error(e)
+      }
+      // router.push({path: '/entry', query: { url: addValue.value }})
+      // なんかうまく行かなかったので……
+      window.location.href = '/entry?url=' + addValue.value
       addValue.value = ''
-    }
+    } 
     return {
       onSubmit, addValue
     }
