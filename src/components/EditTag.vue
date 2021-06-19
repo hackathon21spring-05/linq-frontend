@@ -4,7 +4,6 @@
     class="bg-gray-100 my-1 mr-2 py-0.5 px-2 rounded-lg text-secondary flex"
   >
     <router-link
-      v-if="name.length > 0"
       class="hover:(text-accent underline)"
       :to="`/search?tag=${name}`"
     >
