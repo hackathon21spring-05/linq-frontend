@@ -1,6 +1,9 @@
 <template>
   <div class="bg-primary flex-1">
-    <div class="container mx-auto px-12">
+    <div
+      v-if="entry"
+      class="container mx-auto px-12"
+    >
       <div class="mt-12 h-36 flex max-w-screen-lg mx-auto">
         <button class="focus:outline-none h-18 w-18 my-auto rounded-lg bg-white flex">
           <img
@@ -26,7 +29,7 @@
                 class="mr-1 h-4 my-auto"
                 :src="LinkIcon"
               >
-              {{ entry.url }}
+              {{ decodeURI(entry.url) }}
             </div>
           </a>
         </div>
@@ -89,14 +92,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, watch } from 'vue'
+import { defineComponent, computed, ref, watch, watchEffect } from 'vue'
 import useQuery from '/@/use/query'
+import apis, {EntryDetail} from '/@/lib/apis'
 import EditTag from '/@/components/EditTag.vue'
 import BookmarkEmpty from '/@/assets/bookmark_empty.svg'
 import BookmarkFill from '/@/assets/bookmark_fill.svg'
 import LinkIcon from '/@/assets/link.svg'
 import TagIcon from '/@/assets/tag.svg'
 import AddButton from '/@/assets/addbutton.svg'
+import sha256 from 'js-sha256'
 
 export default defineComponent({
   name: 'Entry',
@@ -118,19 +123,20 @@ export default defineComponent({
         addValue.value = v
       }
     )
-    const entry = {
-      'url': url.value,
-      'title': '加藤恵 「どうかな？わたしは、あなたが望む、メインヒロインに、なれたかな？」「どうかな？わたしは、あなたが望む、メインヒロインに、なれたかな？」',
-      'captiopn': '豊ヶ崎学園に通う高校2年生で、同人サークル『Blessing software』のメインヒロイン(役割不明)。のちにサークル副代表を兼任。目鼻立ちが整っていて、可愛いと綺麗が中途半端に同居した容姿。白いベレー帽とスマホがトレードマーク。',
-      'thumbnail': 'https://saenai-movie.com/megumi_birthday_fine/present/assets/img/top/img_main.jpg',
-      'tags': [
-        'kato', 'megumi', 'kashiwagi', 'eriri',
-        'kasumigaoka', 'utaha', 'hyodo', 'michiru', 'hashima', 'izumi'
-      ],
-      'isBookmark': false
-    }
+    const entry = ref<EntryDetail>()
+    watchEffect(async () => {
+      if (url.value == undefined) return
+      const entryId = sha256.sha256(encodeURI(url.value))
+      try {
+        const res = await apis.getEntryDetail(entryId)
+        entry.value = res.data
+      } catch (e) {
+        console.error(url.value, e)
+      }
+    })
+
     const BookmarkLogo = computed(() => 
-      entry.isBookmark ? BookmarkFill : BookmarkEmpty
+      entry.value?.isBookmark ? BookmarkFill : BookmarkEmpty
     )
 
     const onSubmit = (e: Event) => {
