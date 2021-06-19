@@ -25,7 +25,7 @@
             </div>
           </a>
         </div>
-        <div>
+        <div class="min-w-50">
           <div class="h-14 text-xl font-bold mb-3 line-clamp-2 hover:text-accent duration-200">
             <a
               :href="entry.url"
@@ -36,7 +36,7 @@
           </div>
           <div class="line-clamp-3 text-secondary">
             <router-link :to="`/entry?url=${entry.url}`">
-              {{ entry.captiopn }}
+              {{ entry.caption }}
             </router-link>
           </div>
         </div>
