@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import apis from '../lib/apis'
+import { redirect2AuthEndpoint } from '/@/use/api'
 
 const Home = () => import('/@/pages/Home.vue')
 const Bookmark = () => import('/@/pages/Bookmark.vue')
@@ -12,7 +13,24 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'Home', 
-    component: Home
+    component: Home,
+    beforeEnter: async (to, _, next) => {
+      let me = sessionStorage.getItem('me')
+      // ログイン済みかどうか調べる
+      if (!me) {
+        try {
+          const res = await apis.getMe()
+          me = String(res.data.name)
+        } catch(e) {
+          console.error(e)
+        }
+      }
+      if (!me) {
+        sessionStorage.setItem('destination', to.fullPath)
+        redirect2AuthEndpoint()
+      }
+      next()
+    }
   },
   {
     path: '/bookmark',
