@@ -10,7 +10,6 @@ const app = createApp(App)
 app.use(router)
 app.use(store)
 app.use(lazyPlugin, {
-  loading: 'loading.png',
-  error: 'error.png'
+  error: '/@/assets/noimage/no.svg'
 })
 app.mount('#app')
