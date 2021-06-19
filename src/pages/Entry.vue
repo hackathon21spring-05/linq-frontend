@@ -145,7 +145,7 @@ export default defineComponent({
 
     const onSubmit = async (e: Event) => {
       e.preventDefault()
-      if (addValue.value === '' || url.value == undefined) return
+      if (addValue.value === '' || url.value === undefined) return
       const entryId = sha256.sha256(decodeURI(url.value))
       try {
         await apis.postTags(entryId, addValue.value)
@@ -159,28 +159,32 @@ export default defineComponent({
 
     const changeBookmark = async(e: Event) => {
       e.preventDefault()
-      if (url.value == undefined || entry.value == undefined) return
+      if (url.value === undefined || entry.value === undefined) return
       const entryId = sha256.sha256(decodeURI(url.value))
-      if (entry.value.isBookmark == true) {
+      if (entry.value.isBookmark === true) {
         // ブックマークの削除
         try {
+          entry.value.isBookmark = false
           const res = await apis.deleteBookmark(entryId)
-          if (res.status == 204){
-            entry.value.isBookmark = false
-          }
-        } catch (e) {
-          console.error(url.value, e)
-        }
-      }else if (entry.value.isBookmark == false) {
-        // ブックマークの追加
-        try {
-          const res = await apis.putEntry({
-            url: url.value
-          })
-          if (res.status == 201) {
+          if (res.status !== 204){
             entry.value.isBookmark = true
           }
         } catch (e) {
+          entry.value.isBookmark = true
+          console.error(url.value, e)
+        }
+      }else if (entry.value.isBookmark === false) {
+        // ブックマークの追加
+        try {
+          entry.value.isBookmark = true
+          const res = await apis.putEntry({
+            url: url.value
+          })
+          if (res.status !== 201) {
+            entry.value.isBookmark = false
+          }
+        } catch (e) {
+          entry.value.isBookmark = false
           console.error(url.value, e)
         }
       }

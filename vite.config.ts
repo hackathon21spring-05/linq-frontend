@@ -13,7 +13,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://linq-test.trap.games',
+        target: 'http://localhost:3001',
         changeOrigin: true
       }
     }
