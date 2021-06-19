@@ -64,7 +64,6 @@ export default defineComponent({
         addValue.value = ''
       } catch (e) {
         console.error(e)
-        router.push({path: '/entry', query: { url: addValue.value }})
         addValue.value = ''
       }
     } 
