@@ -49,15 +49,15 @@
             :name="tag"
           />
         </div>
-        <div
-          class="mt-1"
+        <button
+          class="mt-1 focus:outline-none"
           @click="changeBookmark"
         >
           <img
             class="w-full"
             :src="BookmarkLogo"
           >
-        </div>
+        </button>
       </div>
     </div>
   </div>
@@ -92,26 +92,30 @@ export default defineComponent({
       e.preventDefault()
       if (!props.entry.url) return
       const entryId = sha256.sha256(decodeURI(props.entry.url))
-      if (isBookmark.value == true) {
+      if (isBookmark.value === true) {
         // ブックマークの削除
         try {
+          isBookmark.value = false
           const res = await apis.deleteBookmark(entryId)
-          if (res.status == 204){
-            isBookmark.value = false
-          }
-        } catch (e) {
-          console.error(props.entry.url, e)
-        }
-      }else if (isBookmark.value == false) {
-        // ブックマークの追加
-        try {
-          const res = await apis.putEntry({
-            url: props.entry.url
-          })
-          if (res.status == 201) {
+          if (res.status !== 204){
             isBookmark.value = true
           }
         } catch (e) {
+          isBookmark.value = true
+          console.error(props.entry.url, e)
+        }
+      }else if (isBookmark.value === false) {
+        // ブックマークの追加
+        try {
+          isBookmark.value = true
+          const res = await apis.putEntry({
+            url: props.entry.url
+          })
+          if (res.status !== 201) {
+            isBookmark.value = false
+          }
+        } catch (e) {
+          isBookmark.value = false
           console.error(props.entry.url, e)
         }
       }
