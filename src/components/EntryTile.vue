@@ -8,8 +8,9 @@
             :to="`/entry?url=${entry.url}`"
           >
             <img
+              v-lazy="entry.thumbnail"
               class="min-w-30 sm:min-w-40 h-30 object-cover"
-              :src="entry.thumbnail"
+              @error="noImage"
             >
           </router-link>
           <a
@@ -71,6 +72,7 @@ import Tag from '/@/components/Tag.vue'
 import BookmarkEmpty from '/@/assets/bookmark_empty.svg'
 import BookmarkFill from '/@/assets/bookmark_fill.svg'
 import LinkIcon from '/@/assets/link.svg'
+import NoIcon from '/@/assets/noimage/no.svg'
 
 export default defineComponent({
   name: 'EntryTile',
@@ -88,6 +90,9 @@ export default defineComponent({
     const BookmarkLogo = computed(() => 
       isBookmark.value ? BookmarkFill : BookmarkEmpty
     )
+    const noImage = (e) => {
+      e.target.src = NoIcon
+    }
     const changeBookmark = async(e: Event) => {
       e.preventDefault()
       if (!props.entry.url) return
@@ -122,7 +127,7 @@ export default defineComponent({
     }
 
     return {
-      BookmarkLogo, LinkIcon, changeBookmark
+      BookmarkLogo, LinkIcon, changeBookmark, noImage
     }
   }
 })
