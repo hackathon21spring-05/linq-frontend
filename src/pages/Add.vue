@@ -59,13 +59,14 @@ export default defineComponent({
         }
         const res = await apis.putEntry(entry)
         addValue.value = res.data.url ?? ''
+        router.replace({path: '/entry', query: { url: addValue.value }})
+        // window.location.href = '/entry?url=' + addValue.value
+        addValue.value = ''
       } catch (e) {
         console.error(e)
+        router.push({path: '/entry', query: { url: addValue.value }})
+        addValue.value = ''
       }
-      // router.push({path: '/entry', query: { url: addValue.value }})
-      // なんかうまく行かなかったので……
-      window.location.href = '/entry?url=' + addValue.value
-      addValue.value = ''
     } 
     return {
       onSubmit, addValue
