@@ -8,8 +8,12 @@
         <p>記事をブックマークし、知見を蓄えましょう。</p>
         <p>ブックマークされた記事は他のユーザーと共有することができます。</p>
       </div>
+      <img
+        class="mt-10 w-38 mx-auto"
+        :src="AddBookmark"
+      >
       <form
-        class="mt-8 mx-12 rounded-xl flex flex-col"
+        class="mt-10 mx-12 rounded-xl flex flex-col"
         @submit="onSubmit"
       >
         <input
@@ -32,6 +36,7 @@
 import { defineComponent, ref, watch } from 'vue'
 import apis from '/@/lib/apis'
 import router from '/@/router'
+import AddBookmark from '/@/assets/add_bookmark.svg'
 
 export default defineComponent({
   name: 'Add',
@@ -68,7 +73,7 @@ export default defineComponent({
       }
     } 
     return {
-      onSubmit, addValue
+      onSubmit, addValue, AddBookmark
     }
   }
 })

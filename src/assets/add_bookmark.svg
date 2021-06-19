@@ -1,0 +1,18 @@
+<svg width="163" height="163" viewBox="0 0 163 163" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="81.5" cy="81.5" r="71.5" fill="white"/>
+<rect x="39" y="89.2427" width="6" height="6" transform="rotate(-45 39 89.2427)" fill="#D8F780"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M33.3333 120H30.6667V122.667H28V125.333H30.6667V128H33.3333V125.333H36V122.667H33.3333V120Z" fill="#A0EBA3"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M52.3333 24H49.6667V26.6667H47V29.3333H49.6667V32H52.3333V29.3333H55V26.6667H52.3333V24Z" fill="#D8F780"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M109.333 95H106.667V97.6667H104V100.333H106.667V103H109.333V100.333H112V97.6667H109.333V95Z" fill="#A0EBA3"/>
+<rect x="116" y="132.243" width="6" height="6" transform="rotate(-45 116 132.243)" fill="#D8F780"/>
+<rect x="128" y="58.2427" width="6" height="6" transform="rotate(-45 128 58.2427)" fill="#A0EBA3"/>
+<circle cx="24.5" cy="62.5" r="3.5" fill="#A0EBA3"/>
+<circle cx="76.5" cy="142.5" r="3.5" fill="#A0EBA3"/>
+<circle cx="103.5" cy="23.5" r="3.5" fill="#D8F780"/>
+<circle cx="149.5" cy="84.5" r="3.5" fill="#D8F780"/>
+<path d="M105.4 47.8889H58.6L56 50.499V118.362L60.5344 120.111L82 96.1606L103.466 120.111L108 118.362V50.499L105.4 47.8889ZM102.8 111.576L83.9344 90.5123H80.0656L61.2 111.576V53.1092H102.8V111.576Z" fill="#FF8E25"/>
+<path d="M102.8 111.576L83.9344 90.5123H80.0656L61.2 111.576V53.1092H102.8V111.576Z" fill="#FF8E25"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M56 50.7778C65.3889 55.5545 74.7778 59.952 84.1667 62.769C92.1111 65.1526 100.778 65.9445 108 64.7244V118.356L103.466 120.105L82 96.1541L60.5344 120.105L56 118.356L56 50.7778Z" fill="#FFA825"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M56 61.6111C65.6296 68.3538 75.2593 74.4536 84.8889 78.5017C92.5926 81.7402 100.296 82.2211 108 83.1964V118.362L103.466 120.111L82 96.1606L60.5344 120.111L56 118.362L56 61.6111Z" fill="#FFB932"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M108 96.9918C100.537 96.4278 93.0741 95.145 85.6111 92.8295C75.7407 89.7671 65.8704 84.8984 56 79.6667V118.362L60.5344 120.111L82 96.1607L103.466 120.111L108 118.362V96.9918Z" fill="#FFD644"/>
+</svg>
