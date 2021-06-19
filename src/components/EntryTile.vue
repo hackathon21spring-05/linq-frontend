@@ -90,7 +90,8 @@ export default defineComponent({
     const BookmarkLogo = computed(() => 
       isBookmark.value ? BookmarkFill : BookmarkEmpty
     )
-    const noImage = (e) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const noImage = (e: any) => {
       e.target.src = NoIcon
     }
     const changeBookmark = async(e: Event) => {
