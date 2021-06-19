@@ -39,6 +39,15 @@ const routes: RouteRecordRaw[] = [
     name: 'Callback',
     component: Home,
     beforeEnter: async (to, _, next) => {
+      try {
+        const res = await apis.getMe()
+        if (res.status == 200) {
+          next('/')
+          return
+        }
+      } catch(e) {
+        console.error(e);
+      }
       await apis.callback(String(to.query.code))
       const destination = sessionStorage.getItem('destination')
       if (destination) next(destination)
