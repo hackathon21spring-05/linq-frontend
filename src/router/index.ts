@@ -6,6 +6,7 @@ const Bookmark = () => import('/@/pages/Bookmark.vue')
 const Search = () => import('/@/pages/Search.vue')
 const Add = () => import('/@/pages/Add.vue')
 const Entry = () => import('/@/pages/Entry.vue')
+const NotFound = () => import('/@/pages/NotFound.vue')
 
 const routes: RouteRecordRaw[] = [
   {
@@ -43,6 +44,11 @@ const routes: RouteRecordRaw[] = [
       if (destination) next(destination)
       else next('/')
     }
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    component: NotFound
   }
 ]
 
