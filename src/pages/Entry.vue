@@ -57,7 +57,7 @@
               v-for="tag in entry.tags"
               :key="tag"
               :name="tag"
-              :entry-url="entry.url"
+              :entry-url="url"
             />
             <!-- <button class="ml-auto my-auto focus:outline-none">
               <img
