@@ -15,106 +15,26 @@ const routes: RouteRecordRaw[] = [
     path: '/',
     name: 'Home', 
     component: Home,
-    beforeEnter: async (to, _, next) => {
-      // ログイン済みかどうか調べる
-      const store = useStore()
-      if (!store.state.me){
-        try {
-          await store.dispatch.fetchMe()
-        } catch(e) {
-          console.error(e)
-        }
-      }
-      if (!store.state.me) {
-        sessionStorage.setItem('destination', to.fullPath)
-        redirect2AuthEndpoint()
-      }
-      next()
-    }
   },
   {
     path: '/bookmark',
     name: 'Bookmark', 
     component: Bookmark,
-    beforeEnter: async (to, _, next) => {
-      // ログイン済みかどうか調べる
-      const store = useStore()
-      if (!store.state.me){
-        try {
-          await store.dispatch.fetchMe()
-        } catch(e) {
-          console.error(e)
-        }
-      }
-      if (!store.state.me) {
-        sessionStorage.setItem('destination', to.fullPath)
-        redirect2AuthEndpoint()
-      }
-      next()
-    }
   },
   {
     path: '/search',
     name: 'Search',
     component: Search,
-    beforeEnter: async (to, _, next) => {
-      // ログイン済みかどうか調べる
-      const store = useStore()
-      if (!store.state.me){
-        try {
-          await store.dispatch.fetchMe()
-        } catch(e) {
-          console.error(e)
-        }
-      }
-      if (!store.state.me) {
-        sessionStorage.setItem('destination', to.fullPath)
-        redirect2AuthEndpoint()
-      }
-      next()
-    }
   },
   {
     path: '/add',
     name: 'Add',
     component: Add,
-    beforeEnter: async (to, _, next) => {
-      // ログイン済みかどうか調べる
-      const store = useStore()
-      if (!store.state.me){
-        try {
-          await store.dispatch.fetchMe()
-        } catch(e) {
-          console.error(e)
-        }
-      }
-      if (!store.state.me) {
-        sessionStorage.setItem('destination', to.fullPath)
-        redirect2AuthEndpoint()
-      }
-      next()
-    }
   },
   {
     path: '/entry',
     name: 'Entry',
     component: Entry,
-    beforeEnter: async (to, _, next) => {
-      // ログイン済みかどうか調べる
-      const store = useStore()
-      if (!store.state.me){
-        try {
-          await store.dispatch.fetchMe()
-        } catch(e) {
-          console.error(e)
-        }
-      }
-      if (!store.state.me) {
-        sessionStorage.setItem('destination', to.fullPath)
-        redirect2AuthEndpoint()
-      }
-      next()
-    }
   },
   {
     path: '/callback',
@@ -134,7 +54,27 @@ const routes: RouteRecordRaw[] = [
   }
 ]
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes
 })
+
+router.beforeEach(async (to, from, next) => {
+  if (from.path === '/callback') return
+  // ログイン済みかどうか調べる
+  const store = useStore()
+  if (!store.state.me){
+    try {
+      await store.dispatch.fetchMe()
+    } catch(e) {
+      console.error(e)
+    }
+  }
+  if (!store.state.me) {
+    sessionStorage.setItem('destination', to.fullPath)
+    redirect2AuthEndpoint()
+  }
+  next()
+})
+
+export default router
