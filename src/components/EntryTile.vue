@@ -49,7 +49,10 @@
             :name="tag"
           />
         </div>
-        <div class="mt-1">
+        <div
+          class="mt-1"
+          @click="changeBookmark"
+        >
           <img
             class="w-full"
             :src="BookmarkLogo"
@@ -61,7 +64,9 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
+import { defineComponent, computed, ref } from 'vue'
+import apis from '/@/lib/apis'
+import sha256 from 'js-sha256'
 import Tag from '/@/components/Tag.vue'
 import BookmarkEmpty from '/@/assets/bookmark_empty.svg'
 import BookmarkFill from '/@/assets/bookmark_fill.svg'
@@ -79,11 +84,41 @@ export default defineComponent({
     }
   },
   setup(props) {
+    const isBookmark = ref<boolean>(props.entry.isBookmark)
     const BookmarkLogo = computed(() => 
-      props.entry.isBookmark ? BookmarkFill : BookmarkEmpty
+      isBookmark.value ? BookmarkFill : BookmarkEmpty
     )
+    const changeBookmark = async(e: Event) => {
+      e.preventDefault()
+      if (!props.entry.url) return
+      const entryId = sha256.sha256(decodeURI(props.entry.url))
+      if (isBookmark.value == true) {
+        // ブックマークの削除
+        try {
+          const res = await apis.deleteBookmark(entryId)
+          if (res.status == 204){
+            isBookmark.value = false
+          }
+        } catch (e) {
+          console.error(props.entry.url, e)
+        }
+      }else if (isBookmark.value == false) {
+        // ブックマークの追加
+        try {
+          const res = await apis.putEntry({
+            url: props.entry.url
+          })
+          if (res.status == 201) {
+            isBookmark.value = true
+          }
+        } catch (e) {
+          console.error(props.entry.url, e)
+        }
+      }
+    }
+
     return {
-      BookmarkLogo, LinkIcon
+      BookmarkLogo, LinkIcon, changeBookmark
     }
   }
 })
