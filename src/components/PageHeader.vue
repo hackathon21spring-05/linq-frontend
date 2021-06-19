@@ -41,7 +41,7 @@
         <router-link to="/bookmark">
           <img
             class="h-10 rounded-1/2"
-            src="https://q.trap.jp/api/v3/public/icon/toshi00"
+            :src="userIcon"
           >
         </router-link>
       </div>
@@ -50,7 +50,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, watch, ref } from 'vue'
+import { defineComponent, watch, ref, computed } from 'vue'
+import { useStore } from '/@/store'
 import router from '/@/router'
 import logo from '/@/assets/logo.svg'
 import penIcon from '/@/assets/penicon.svg'
@@ -65,6 +66,7 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const store = useStore()
     const searchValue = ref(props.value)
     watch(
       () => props.value,
@@ -79,8 +81,15 @@ export default defineComponent({
       router.push({path: '/search', query: { tag: searchValue.value }})
       searchValue.value = ''
     }
+
+    // ここ，store.state.meがなかったときの処理したほうがいいのかな？ HELP
+    const userIcon = computed(() => 
+      'https://q.trap.jp/api/v3/public/icon/toshi00'
+      // 'https://q.trap.jp/api/v3/public/icon/' + store.state.me?.name
+    )
+
     return {
-      logo, penIcon, glass, onSubmit, searchValue
+      logo, penIcon, glass, onSubmit, searchValue, userIcon
     }
   }
 })
