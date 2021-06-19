@@ -17,6 +17,7 @@
         @submit="onSubmit"
       >
         <input
+          ref="addInput"
           v-model="addValue"
           class="bg-white h-12 px-6 text-xl rounded-lg border-none w-full focus:outline-none"
           type="text"
@@ -33,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
+import { defineComponent, ref, watch, onMounted } from 'vue'
 import apis from '/@/lib/apis'
 import router from '/@/router'
 import AddBookmark from '/@/assets/add_bookmark.svg'
@@ -48,12 +49,18 @@ export default defineComponent({
   },
   setup(props) {
     const addValue = ref(props.value)
+    const addInput = ref<HTMLInputElement>()
+
     watch(
       () => props.value,
       v => {
         addValue.value = v
       }
     )
+
+    onMounted(() => {
+      addInput.value?.focus()
+    })
 
     const onSubmit = async(e: Event) => {
       e.preventDefault()
@@ -73,7 +80,7 @@ export default defineComponent({
       }
     } 
     return {
-      onSubmit, addValue, AddBookmark
+      onSubmit, addValue, AddBookmark, addInput
     }
   }
 })
