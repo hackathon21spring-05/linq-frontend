@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import apis from '../lib/apis'
 import { redirect2AuthEndpoint } from '/@/use/api'
+import { useStore } from '/@/store'
 
 const Home = () => import('/@/pages/Home.vue')
 const Bookmark = () => import('/@/pages/Bookmark.vue')
@@ -15,17 +16,16 @@ const routes: RouteRecordRaw[] = [
     name: 'Home', 
     component: Home,
     beforeEnter: async (to, _, next) => {
-      let me = sessionStorage.getItem('me')
       // ログイン済みかどうか調べる
-      if (!me) {
+      const store = useStore()
+      if (!store.state.me){
         try {
-          const res = await apis.getMe()
-          me = String(res.data.name)
+          await store.dispatch.fetchMe()
         } catch(e) {
           console.error(e)
         }
       }
-      if (!me) {
+      if (!store.state.me) {
         sessionStorage.setItem('destination', to.fullPath)
         redirect2AuthEndpoint()
       }
@@ -57,15 +57,6 @@ const routes: RouteRecordRaw[] = [
     name: 'Callback',
     component: Home,
     beforeEnter: async (to, _, next) => {
-      try {
-        const res = await apis.getMe()
-        if (res.status == 200) {
-          next('/')
-          return
-        }
-      } catch(e) {
-        console.error(e);
-      }
       await apis.callback(String(to.query.code))
       const destination = sessionStorage.getItem('destination')
       if (destination) next(destination)
