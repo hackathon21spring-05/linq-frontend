@@ -27,7 +27,7 @@
             :href="entry.url"
             target="_blank"
           >
-            <div class="ml-1 text-secondary flex">
+            <div class="ml-1 text-secondary flex pr-2">
               <img
                 class="mr-1 h-4 my-auto"
                 :src="LinkIcon"
