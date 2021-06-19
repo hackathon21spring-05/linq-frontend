@@ -55,10 +55,10 @@ export default defineComponent({
       if (addValue.value === '') return
       try {
         const entry = {
-          // あとでサーバー側で対応する
-          url: encodeURI(addValue.value)
+          url: addValue.value
         }
-        await apis.putEntry(entry)
+        const res = await apis.putEntry(entry)
+        addValue.value = res.data.url ?? ''
       } catch (e) {
         console.error(e)
       }

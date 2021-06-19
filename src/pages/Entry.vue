@@ -29,7 +29,7 @@
                 class="mr-1 h-4 my-auto"
                 :src="LinkIcon"
               >
-              {{ decodeURI(entry.url) }}
+              {{ entry.url }}
             </div>
           </a>
         </div>
@@ -126,7 +126,7 @@ export default defineComponent({
     const entry = ref<EntryDetail>()
     watchEffect(async () => {
       if (url.value == undefined) return
-      const entryId = sha256.sha256(encodeURI(url.value))
+      const entryId = sha256.sha256(decodeURI(url.value))
       try {
         const res = await apis.getEntryDetail(entryId)
         entry.value = res.data
@@ -142,7 +142,7 @@ export default defineComponent({
     const onSubmit = async (e: Event) => {
       e.preventDefault()
       if (addValue.value === '' || url.value == undefined) return
-      const entryId = sha256.sha256(encodeURI(url.value))
+      const entryId = sha256.sha256(decodeURI(url.value))
       try {
         await apis.postTags(entryId, addValue.value)
         const res = await apis.getEntryDetail(entryId)
