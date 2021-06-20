@@ -6,9 +6,11 @@
       </div>
       <div class="grid lg:grid-cols-2 gap-5 mt-8">
         <entry-tile
-          v-for="entry in searchEntries"
+          v-for="(entry, index) in searchEntries"
           :key="entry.url"
           :entry="entry"
+          :index="index"
+          :change-bookmarks="changeBookmarks"
         />
       </div>
     </div>
@@ -31,13 +33,17 @@ export default defineComponent({
     // const title = useQuery('title')
     // const text = useQuery('text')
     
-    const searchEntries = ref<EntryDetail[]>()
+    const searchEntries = ref<EntryDetail[]>([])
+    const changeBookmarks = (index: number) => {
+      searchEntries.value[index].count += searchEntries.value[index].isBookmark? -1: 1
+      searchEntries.value[index].isBookmark = !searchEntries.value[index].isBookmark
+    }
     watchEffect(async () => {
       const res = await apis.getSearchEntry(tag.value)
       searchEntries.value = res.data
     })
     return {
-      tag, searchEntries
+      tag, searchEntries, changeBookmarks
     }
   }
 })
