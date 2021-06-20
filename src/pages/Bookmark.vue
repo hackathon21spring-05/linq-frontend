@@ -6,9 +6,11 @@
       </div>
       <div class="grid lg:grid-cols-2 gap-5 mt-8">
         <entry-tile
-          v-for="entry in myEntries"
+          v-for="(entry, index) in myEntries"
           :key="entry.url"
+          :index="index"
           :entry="entry"
+          :change-bookmarks="changeBookmarks"
         />
       </div>
     </div>
@@ -26,13 +28,17 @@ export default defineComponent({
     EntryTile
   },
   setup() {
-    const myEntries = ref<EntryDetail[]>()
+    const myEntries = ref<EntryDetail[]>([])
+    const changeBookmarks = (index: number) => {
+      myEntries.value[index].count += myEntries.value[index].isBookmark? -1: 1
+      myEntries.value[index].isBookmark = !myEntries.value[index].isBookmark
+    }
     watchEffect(async () => {
       const res = await apis.getBookmark()
       myEntries.value = res.data
     })
     return {
-      myEntries
+      myEntries, changeBookmarks
     }
   }
 })
