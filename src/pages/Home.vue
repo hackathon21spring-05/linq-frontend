@@ -45,10 +45,22 @@ export default defineComponent({
     const changeBookmarksNewEntries = (index: number) => {
       newEntries.value[index].count += newEntries.value[index].isBookmark? -1: 1
       newEntries.value[index].isBookmark = !newEntries.value[index].isBookmark
+      hotEntries.value = hotEntries.value.map((entry: EntryDetail) => {
+        if (entry.id === newEntries.value[index].id) {
+          entry = newEntries.value[index]
+        }
+        return entry
+      })
     }
     const changeBookmarksHotEntries = (index: number) => {
       hotEntries.value[index].count += hotEntries.value[index].isBookmark? -1: 1
       hotEntries.value[index].isBookmark = !hotEntries.value[index].isBookmark
+      newEntries.value = newEntries.value.map((entry: EntryDetail) => {
+        if (entry.id === hotEntries.value[index].id) {
+          entry = hotEntries.value[index]
+        }
+        return entry
+      })
     }
     watchEffect(async () => {
       const res = await apis.getEntry()
