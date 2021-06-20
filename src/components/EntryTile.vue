@@ -58,14 +58,17 @@
             :src="BookmarkLogo"
           >
         </button>
+        <div class="mt-auto ml-1">
+          {{ entry.count }}
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from 'vue'
-import apis from '/@/lib/apis'
+import { defineComponent, computed, ref, PropType } from 'vue'
+import apis, { EntryDetail } from '/@/lib/apis'
 import sha256 from 'js-sha256'
 import Tag from '/@/components/Tag.vue'
 import BookmarkEmpty from '/@/assets/bookmark_empty.svg'
@@ -79,43 +82,53 @@ export default defineComponent({
   },
   props: {
     entry: {
-      type: Object,
+      type: Object as PropType<EntryDetail>,
+      required: true
+    },
+    index: {
+      type: Number,
+      required: true
+    },
+    changeBookmarks: {
+      type: Function,
       required: true
     }
   },
   setup(props) {
-    const isBookmark = ref<boolean>(props.entry.isBookmark)
     const BookmarkLogo = computed(() => 
-      isBookmark.value ? BookmarkFill : BookmarkEmpty
+      props.entry.isBookmark ? BookmarkFill : BookmarkEmpty
     )
+    const chgBookmarkStatus = () => {
+      props.changeBookmarks(props.index)
+    }
     const changeBookmark = async(e: Event) => {
       e.preventDefault()
       if (!props.entry.url) return
       const entryId = sha256.sha256(decodeURI(props.entry.url))
-      if (isBookmark.value === true) {
+      if (props.entry.isBookmark === true) {
         // ブックマークの削除
         try {
-          isBookmark.value = false
+          chgBookmarkStatus()
           const res = await apis.deleteBookmark(entryId)
           if (res.status !== 204){
-            isBookmark.value = true
+            chgBookmarkStatus()
           }
         } catch (e) {
-          isBookmark.value = true
+          chgBookmarkStatus()
           console.error(props.entry.url, e)
         }
-      }else if (isBookmark.value === false) {
+      }else if (props.entry.isBookmark === false) {
         // ブックマークの追加
         try {
-          isBookmark.value = true
+          chgBookmarkStatus()
           const res = await apis.putEntry({
             url: props.entry.url
           })
           if (res.status !== 201) {
-            isBookmark.value = false
+            chgBookmarkStatus()
           }
         } catch (e) {
-          isBookmark.value = false
+          chgBookmarkStatus()
           console.error(props.entry.url, e)
         }
       }
