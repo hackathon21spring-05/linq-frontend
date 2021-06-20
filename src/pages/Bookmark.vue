@@ -4,7 +4,7 @@
       <div class="text-3xl font-bold mt-16">
         My Bookmark
       </div>
-      <div class="grid lg:grid-cols-2 gap-5 mt-8">
+      <div class="grid lg:grid-cols-2 gap-5 mt-8 mb-16">
         <entry-tile
           v-for="(entry, index) in myEntries"
           :key="entry.url"
