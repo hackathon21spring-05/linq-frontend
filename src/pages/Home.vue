@@ -22,7 +22,7 @@
           :key="entry.url"
           :entry="entry"
           :index="index"
-          :change-bookmarks="changeBookmarks"
+          :change-bookmarks="changeBookmarksNewEntries"
         />
       </div>
     </div>
