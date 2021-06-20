@@ -35,8 +35,6 @@ export default defineComponent({
     watchEffect(async () => {
       const res = await apis.getEntry()
       newEntries.value = res.data
-      console.log(res.data)
-      console.log(newEntries.value)
     })
     return {
       newEntries, changeBookmarks
