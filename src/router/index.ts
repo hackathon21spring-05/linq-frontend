@@ -60,19 +60,20 @@ const router = createRouter({
 })
 
 router.beforeEach(async (to, from, next) => {
-  if (from.path === '/callback') return
-  // ログイン済みかどうか調べる
-  const store = useStore()
-  if (!store.state.me){
-    try {
-      await store.dispatch.fetchMe()
-    } catch(e) {
-      console.error(e)
+  if (to.path !== '/callback') {
+    // ログイン済みかどうか調べる
+    const store = useStore()
+    if (!store.state.me){
+      try {
+        await store.dispatch.fetchMe()
+      } catch(e) {
+        console.error(e)
+      }
     }
-  }
-  if (!store.state.me) {
-    sessionStorage.setItem('destination', to.fullPath)
-    redirect2AuthEndpoint()
+    if (!store.state.me) {
+      sessionStorage.setItem('destination', to.fullPath)
+      redirect2AuthEndpoint()
+    }
   }
   next()
 })
