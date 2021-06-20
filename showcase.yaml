@@ -3,7 +3,4 @@ type: static
 work_dir: ./dist
 
 branch:
-  master:
-    startup: |
-      npm ci
-      npm run build
+  production:
