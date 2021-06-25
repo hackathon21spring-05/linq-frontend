@@ -12,7 +12,7 @@ npm run dev
 
 ## product
 
-`master`ブランチがCloudflareに自動デプロイ
+部内PaaS showcaseを用いてデプロイ
 
-https://linq-frontend.pages.dev
+https://linq.trap.games/
 
