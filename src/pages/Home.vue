@@ -1,8 +1,8 @@
 <template>
   <div class="bg-primary flex-1">
     <div class="container mx-auto px-4">
-      <div class="text-3xl font-bold mt-12">
-        Hot
+      <div class="text-4xl font-bold mt-12">
+        🔥 Hot
       </div>
       <div class="grid lg:grid-cols-2 gap-5 mt-8 mb-16">
         <entry-tile
@@ -13,8 +13,8 @@
           :change-bookmarks="changeBookmarksHotEntries"
         />
       </div>
-      <div class="text-3xl font-bold mt-12">
-        New
+      <div class="text-4xl font-bold mt-12">
+        ✨New
       </div>
       <div class="grid lg:grid-cols-2 gap-5 mt-8 mb-16">
         <entry-tile
